@@ -2,9 +2,13 @@
 
 Lecture materials and exercises for the Princeton Neuroscience Institute's 2020 Graduate Student Bootcamp.
 
-## Development Resources
-- [PNI Bootcamp 2019](https://github.com/zashwood/pni_bootcamp_2019)
-- [Columbia Data Science Bootcamp](https://github.com/szorowi1/qmss2017)
-- [Neural Data Science for Python (Book)](https://www.dropbox.com/sh/o1nkbnizeo9ykfl/AAAFo-hk-vBO8SOY_6Zjvdl6a?dl=0)
-- [Berkeley's Stats for Neuroscience](https://github.com/charlesfrye/AppliedStatisticsForNeuroscience)
-- [Intro to Programming](https://www.teamten.com/lawrence/programming/intro/)
+## Organization
+
+| Module | Instructor(s)                     | Topic                      | Description                                       |
+|--------|-----------------------------------|----------------------------|---------------------------------------------------|
+| 1      | Gabe Perez-Giz<br>Sam Zorowitz    | Python Programming         | An overview of the python scientific stack.       |
+| 2      | Rachel Lee<br>Yoel Sanchez-Araujo | Probability                | Fundamentals of probability theory.               |
+| 3      | Yotam Sagiv<br>Sam Zorowitz       | Model Fitting & Comparison | An introduction to model fitting in neuroscience. |
+| 4      | Sarah Jo Venditto                 | Calculus & Diff Eq         | Calculus & diff eq in neuroscience.               |
+| 5      | Carlos Correa<br>Max Aragon       | Linear Algebra             | Fundamentals of linear algebra.                   |
+| 6      | Sam Zorowitz                      | Stats & P-values           | A deeper understanding of p-values.               |
