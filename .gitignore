@@ -109,3 +109,5 @@ venv.bak/
 *.pkl
 .Rproj.user
 .Rhistory
+
+*.swp

@@ -1,0 +1,93 @@
+<html>
+    <head>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    </head>
+    <body>
+        <label>
+            A
+        <textarea name="A" rows=10, cols=20>2 0 -1
+-1 -1 2
+0 4 -3</textarea>
+        </label>
+        <label>
+            b
+            <input type="text" name="b" value="0 -1 4" />
+        </label>
+        <button onclick="plot()">Plot!</button>
+        <div id="plot"></div>
+    <script>
+
+function parsemat(str) {
+    return (str
+        .split('\n')
+        .filter(line => line.trim())
+        .map(line => line
+            .trim()
+            .split(new RegExp('\\s'))
+            .map(i => parseInt(i, 10))));
+}
+function plot() {
+    const A = parsemat(document.querySelector('[name=A]').textContent);
+    const b = parsemat(document.querySelector('[name=b]').value)[0];
+    if (A.length != b.length) {
+        alert('rows of A and length of b do not match.');
+        return;
+    }
+    const colors = ['#f00', '#0f0', '#00f', '#0af', '#000', '#ff0', '#f0f', '#0ff'];
+
+    var data = [];
+    for (var i = 0; i < A.length; i++) {
+        data.push(makeplane(colors[i], A[i], b[i]));
+    }
+
+    var layout = {
+      showlegend: false,
+      autosize: true,
+      width: 600,
+      height: 600,
+      scene: {
+        xaxis: {title: 'x'},
+        yaxis: {title: 'y'},
+        zaxis: {title: 'z'}
+      }
+    };
+
+    Plotly.purge('plot');
+    Plotly.newPlot('plot', data, layout);
+
+}
+
+function sortidx(test) {
+    return Array.from(Array(test.length).keys())
+      .sort((a, b) =>
+          test[a] < test[b] ? -1:
+          test[a] > test[b] ? 1 :
+          /* test[a] == test[b] ? */ 0);
+}
+
+const xlim = [-5, 5];
+const ylim = [-4, 4];
+
+var makeplane = (color, abc, d) => {
+if (abc[2] == 0) {
+alert('Z must always have a non-zero coef');
+return;
+}
+  function solvez(x, y) {
+    return (abc[0] * x + abc[1] * y - d) / -abc[2];
+  }
+  return {
+    x:[[xlim[0], xlim[0]], [xlim[1], xlim[1]]], y:[[ylim[0], ylim[1]], [ylim[0], ylim[1]]], z:[[solvez(xlim[0], ylim[0]), solvez(xlim[0], ylim[1])], [solvez(xlim[1], ylim[0]), solvez(xlim[1], ylim[1])]],
+
+    name: '',
+    colorscale: [[0, color], [1, color]],
+    type: 'surface',
+    showscale: false
+  };
+};
+
+plot();
+
+    </script>
+    </body>
+</html>
