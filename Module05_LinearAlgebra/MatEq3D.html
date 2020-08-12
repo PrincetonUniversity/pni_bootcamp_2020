@@ -27,7 +27,7 @@ function parsemat(str) {
             .map(i => parseInt(i, 10))));
 }
 function plot() {
-    const A = parsemat(document.querySelector('[name=A]').textContent);
+    const A = parsemat(document.querySelector('[name=A]').value);
     const b = parsemat(document.querySelector('[name=b]').value)[0];
     if (A.length != b.length) {
         alert('rows of A and length of b do not match.');
@@ -66,7 +66,7 @@ function sortidx(test) {
 }
 
 const xlim = [-5, 5];
-const ylim = [-4, 4];
+const ylim = xlim;
 
 var makeplane = (color, abc, d) => {
 if (abc[2] == 0) {
@@ -77,8 +77,9 @@ return;
     return (abc[0] * x + abc[1] * y - d) / -abc[2];
   }
   return {
-    x:[[xlim[0], xlim[0]], [xlim[1], xlim[1]]], y:[[ylim[0], ylim[1]], [ylim[0], ylim[1]]], z:[[solvez(xlim[0], ylim[0]), solvez(xlim[0], ylim[1])], [solvez(xlim[1], ylim[0]), solvez(xlim[1], ylim[1])]],
-
+    x: [[xlim[0], xlim[0]], [xlim[1], xlim[1]]],
+    y: [[ylim[0], ylim[1]], [ylim[0], ylim[1]]],
+    z: [[solvez(xlim[0], ylim[0]), solvez(xlim[0], ylim[1])], [solvez(xlim[1], ylim[0]), solvez(xlim[1], ylim[1])]],
     name: '',
     colorscale: [[0, color], [1, color]],
     type: 'surface',
